@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <img
+        src="image.png"
+        v-on:load="show=true"
+        v-bind:class="{hide: !show}"
+        width="800px"
+      />
+
+      <pre>{{ $data }}</pre>
+
+      <p>{{ message }} ({{ message_length }})</p>
+      <input v-bind:value="message" v-on:input="handleInput" />
+
+      <!-- 入力が確定するまで処理しない -->
+      <p>{{ message2 }}</p>
+      <input v-model="message2" />
+      <br />
+      <pre>{{ message3 }}</pre>
+      <textarea v-model="message3"></textarea>
+      <br />
+      <label> <input type="checkbox" v-model="val" />{{ val }} </label>
+
+      <p>{{ val2 }}</p>
+      <label> <input type="checkbox" v-model="val2" value="A" />A</label>
+      <label> <input type="checkbox" v-model="val2" value="B" />B</label>
+      <label> <input type="checkbox" v-model="val2" value="C" />C</label>
+
+      <p>{{ val3 }}</p>
+      <label> <input type="radio" v-model="val3" value="A" />A</label>
+      <label> <input type="radio" v-model="val3" value="B" />B</label>
+      <label> <input type="radio" v-model="val3" value="C" />C</label>
+
+      <p>{{ val4 }}</p>
+      <select v-model="val4" multiple>
+        <option disabled="disabled">選択してください</option>
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+      </select>
+
+      <br />
+      <!-- ファイルタイプはv-modelを使えない。changeイベントをハンドルする -->
+      <input type="file" v-on:change="handleChange" />
+      <div v-if="preview"><img v-bind:src="preview" /></div>
+
+      <br />
+      <input type="range" v-model.number="val5" />{{ val5 }}
+      <br />
+      <input type="color" v-model="val6" />{{ val6 }}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

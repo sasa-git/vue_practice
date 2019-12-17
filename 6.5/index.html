@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue.js App</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- この#appの内側にテンプレートを書き込んでいく -->
+      <button v-on:click="toggle=!toggle">切り替え</button>
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <!-- SVGのパーツにトランジションを適用 -->
+        <transition>
+          <my-circle v-bind:fill2="compFill" v-bind:key="compFill"></my-circle>
+        </transition>
+      </svg>
+
+      <br />
+      <button v-on:click="show=!show">切り替え</button>
+      <transition v-on:enter="enter" v-on:after-enter="afterEnter">
+        <div v-if="show">example</div>
+      </transition>
+      <!-- v-bind:css="false"でトランジション処理を無効か -->
+      <transition v-bind:css="false" v-on:before-enter="beforeEnter">
+        <div v-if="show">example2</div>
+      </transition>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

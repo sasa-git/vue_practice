@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue.js App</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- この#appの内側にテンプレートを書き込んでいく -->
+      <p><button v-on:click="order=!order">切り替え</button></p>
+      <transition-group tag="ul" class="list">
+        <li v-for="item in sortedList" v-bind:key="item.id">
+          {{ item.name }}: {{ item.price }}円
+        </li>
+      </transition-group>
+      <br />
+
+      <p>
+        <button v-on:click="doShuffle">シャッフル</button>
+        <button v-on:click="doAdd">追加</button>
+      </p>
+      <transition-group tag="ul" class="list2">
+        <li
+          v-for="(item, index) in list2"
+          v-bind:key="item"
+          class="item"
+          v-on:click="doRemove(index)"
+        >
+          {{ item }}
+        </li>
+      </transition-group>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue.js App</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- この#appの内側にテンプレートを書き込んでいく -->
+      <p>{{ width }}の半分は{{ halfWidth }}</p>
+
+      <p>X: {{ halfPoint.x }}</p>
+      <p>Y: {{ halfPoint.y }}</p>
+
+      <input v-model.number="width" /> {{ width }} <br />
+      <input v-model.number="halfWidth" /> {{ halfWidth }}
+      <pre>{{ $data }}</pre>
+
+      <ol>
+        <li>{{ computedRandom }}</li>
+        <li>{{ computedRandom }}</li>
+      </ol>
+      <ol>
+        <li>{{ methodsRandom() }}</li>
+        <li>{{ methodsRandom() }}</li>
+      </ol>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
